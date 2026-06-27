@@ -1,0 +1,16 @@
+requests
+beautifulsoup4
+pandas
+numpy
+matplotlib
+seaborn
+jupyter
+wordcloud
+
+requests：发送网页请求
+beautifulsoup4：解析网页 HTML
+pandas：数据清洗和分析
+numpy：数值计算
+matplotlib / seaborn：数据可视化
+jupyter：写分析 notebook
+wordcloud：生成技能词云图
