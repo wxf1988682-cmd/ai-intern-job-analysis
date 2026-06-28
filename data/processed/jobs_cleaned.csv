@@ -1,0 +1,11 @@
+﻿job_title,company,city,salary,education,experience,job_description,skills
+AI实习生,星云智能科技,北京,150-200元/天,本科,不限,协助AI产品数据整理，参与AIGC工具测试，使用Python进行基础数据处理，整理技术文档,"Python,AIGC,技术文档"
+Python开发实习生,智数科技,上海,180-250元/天,本科,不限,负责Python脚本开发，使用Pandas和Numpy处理业务数据，协助完成数据清洗和接口测试,"Python,Pandas,Numpy,数据清洗"
+数据分析实习生,蓝海数据,杭州,120-180元/天,本科,不限,使用Excel和Python进行数据统计分析，掌握Pandas，能够制作可视化图表，整理分析报告,"Python,Pandas,Excel,可视化"
+AIGC运营实习生,未来内容实验室,深圳,100-150元/天,本科,不限,负责AIGC工具使用、提示词整理、内容数据标注，协助完成AI产品体验反馈,AIGC
+机器学习实习生,云图算法,北京,200-300元/天,本科及以上,不限,了解机器学习基础，熟悉Python，掌握sklearn或PyTorch者优先，参与模型训练和数据预处理,"Python,机器学习,PyTorch,sklearn"
+爬虫工程实习生,数采科技,广州,150-220元/天,本科,不限,使用Python requests和BeautifulSoup采集公开网页数据，进行数据清洗、去重和结构化存储,"Python,requests,BeautifulSoup,数据清洗"
+数据处理实习生,明析科技,成都,100-160元/天,本科,不限,协助进行数据录入、数据清洗和数据质量检查，熟悉Excel、Python、SQL者优先,"Python,SQL,Excel,数据清洗"
+Python数据分析实习生,量化视界,上海,180-260元/天,本科,不限,使用Python、Pandas、Numpy进行数据分析，参与指标统计、图表绘制和分析文档整理,"Python,Pandas,Numpy,数据分析"
+AI产品实习生,灵犀AI,北京,120-200元/天,本科,不限,参与AI产品需求整理，体验AIGC工具，进行用户反馈分析，能够使用Python处理数据者优先,"Python,AIGC"
+数据可视化实习生,数境科技,杭州,130-180元/天,本科,不限,使用Python进行数据可视化，掌握Matplotlib或Seaborn，能够完成基础数据分析报告s,"Python,Matplotlib,Seaborn,数据分析,可视化"
