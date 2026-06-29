@@ -69,7 +69,7 @@ ai-intern-job-analysis/
     └── resume_project_draft.md
 ```
 
-## 当前进度
+## 六、当前进度
 
 - [x] 完成项目选题与求职方向分析
 - [x] 完成 GitHub 仓库创建与项目目录搭建
@@ -86,6 +86,14 @@ ai-intern-job-analysis/
 第二天主要完成了 Pandas 基础学习和岗位数据清洗模块开发。通过 `pd.read_csv()` 读取岗位 CSV 数据，使用 `head()`、`info()`、`shape`、`isnull().sum()` 查看数据基本情况，并通过 `drop_duplicates()` 删除重复岗位信息，通过 `fillna()` 处理缺失值。
 
 同时，项目初步实现了岗位描述中的技能关键词提取功能，可以从岗位描述中识别 Python、Pandas、Numpy、爬虫、MySQL、机器学习、PyTorch、AIGC、Excel、可视化、技术文档等关键词，并将结果保存到 `skills` 字段中。最终清洗后的数据保存到 `data/processed/jobs_cleaned.csv`。
+
+### Day 3：岗位数据分析模块
+
+- 使用 Pandas 读取清洗后的岗位数据 `jobs_cleaned.csv`
+- 使用 `value_counts()` 统计不同城市的岗位数量分布
+- 基于岗位名称关键词，初步划分岗位方向，包括 Python 数据分析、AIGC/AI 应用、爬虫/数据采集、机器学习基础等
+- 对 `skills` 字段进行拆分与统计，得到岗位技能关键词出现频率
+- 完成 `src/analysis.py` 分析模块，为后续可视化分析做准备
 
 ## 七、预期分析结果
 

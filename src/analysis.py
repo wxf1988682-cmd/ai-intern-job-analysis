@@ -1,137 +1,137 @@
-"""
-analysis.py
-
-用于分析 AI / Python / 数据处理方向实习岗位数据，包括：
-1. 技能关键词频率统计
-2. 城市岗位数量统计
-3. 岗位类型统计
-"""
-
-from pathlib import Path
+import pandas as pd
 from collections import Counter
 
-import pandas as pd
 
-
-# 项目根目录
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# 清洗后数据路径
-CLEANED_DATA_PATH = BASE_DIR / "data" / "processed" / "jobs_cleaned.csv"
-
-# 分析结果输出目录
-REPORT_DIR = BASE_DIR / "outputs" / "reports"
-
-
-def analyze_skill_frequency(df: pd.DataFrame) -> pd.DataFrame:
+def load_data(file_path):
     """
-    统计岗位中技能关键词出现频率。
+    读取清洗后的岗位数据
     """
-    skill_counter = Counter()
-
-    for skills in df["skills"].dropna():
-        skill_list = str(skills).split(",")
-
-        for skill in skill_list:
-            skill = skill.strip()
-            if skill:
-                skill_counter[skill] += 1
-
-    skill_df = pd.DataFrame(
-        skill_counter.items(),
-        columns=["skill", "frequency"]
-    )
-
-    skill_df = skill_df.sort_values(
-        by="frequency",
-        ascending=False
-    )
-
-    return skill_df
+    df = pd.read_csv(file_path)
+    return df
 
 
-def analyze_city_distribution(df: pd.DataFrame) -> pd.DataFrame:
+def analyze_basic_info(df):
     """
-    统计不同城市的岗位数量。
+    分析数据基本信息
     """
-    city_df = df["city"].value_counts().reset_index()
-    city_df.columns = ["city", "job_count"]
+    print("=" * 50)
+    print("一、数据基本信息")
+    print("=" * 50)
 
-    return city_df
+    print("岗位数据总行数：", df.shape[0])
+    print("岗位数据总列数：", df.shape[1])
+
+    print("\n字段名称：")
+    print(df.columns.tolist())
+
+    print("\n前5行数据：")
+    print(df.head())
 
 
-def classify_job_type(job_title: str) -> str:
+def analyze_city_distribution(df):
     """
-    根据岗位名称粗略划分岗位类型。
+    统计不同城市的岗位数量
     """
-    if "AI" in job_title or "AIGC" in job_title:
-        return "AI/AIGC方向"
-    elif "Python" in job_title:
-        return "Python开发/数据分析方向"
-    elif "数据" in job_title:
-        return "数据处理/数据分析方向"
-    elif "机器学习" in job_title:
-        return "机器学习方向"
-    elif "爬虫" in job_title:
-        return "爬虫/数据采集方向"
+    print("\n" + "=" * 50)
+    print("二、城市岗位数量分布")
+    print("=" * 50)
+
+    city_counts = df["location"].value_counts()
+
+    print(city_counts)
+
+    return city_counts
+
+
+def classify_job_type(job_title):
+    """
+    根据岗位名称，简单判断岗位方向
+
+    注意：
+    这是一个基础版本，不是机器学习分类。
+    它的本质是关键词规则判断。
+    """
+
+    title = str(job_title).lower()
+
+    if "aigc" in title or "prompt" in title or "大模型" in title:
+        return "AIGC/AI应用方向"
+    elif "数据分析" in title or "数据处理" in title or "data" in title:
+        return "Python数据分析/数据处理方向"
+    elif "爬虫" in title or "采集" in title or "crawler" in title:
+        return "Python爬虫/数据采集方向"
+    elif "机器学习" in title or "算法" in title or "machine learning" in title:
+        return "机器学习基础方向"
+    elif "python" in title:
+        return "Python开发方向"
     else:
         return "其他方向"
 
 
-def analyze_job_type_distribution(df: pd.DataFrame) -> pd.DataFrame:
+def analyze_job_type_distribution(df):
     """
-    统计岗位类型分布。
+    统计不同岗位方向的数量
     """
+    print("\n" + "=" * 50)
+    print("三、岗位方向数量分布")
+    print("=" * 50)
+
     df["job_type"] = df["job_title"].apply(classify_job_type)
 
-    job_type_df = df["job_type"].value_counts().reset_index()
-    job_type_df.columns = ["job_type", "job_count"]
+    job_type_counts = df["job_type"].value_counts()
 
-    return job_type_df
+    print(job_type_counts)
+
+    return job_type_counts
 
 
-def analyze_jobs():
+def analyze_skill_frequency(df):
     """
-    岗位数据分析主函数。
+    统计 skills 字段中各技能关键词出现次数
     """
-    print("Start analyzing job data...")
+    print("\n" + "=" * 50)
+    print("四、技能关键词出现频率")
+    print("=" * 50)
 
-    # 确保输出目录存在
-    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    all_skills = []
 
-    # 读取清洗后的数据
-    df = pd.read_csv(CLEANED_DATA_PATH, encoding="utf-8-sig")
+    for skills in df["skills"]:
+        if pd.isna(skills):
+            continue
 
-    print("清洗后数据预览：")
-    print(df.head())
+        skill_list = str(skills).split(";")
 
-    # 1. 技能频率分析
-    skill_df = analyze_skill_frequency(df)
-    skill_output_path = REPORT_DIR / "skill_frequency.csv"
-    skill_df.to_csv(skill_output_path, index=False, encoding="utf-8-sig")
+        for skill in skill_list:
+            skill = skill.strip()
+            if skill:
+                all_skills.append(skill)
 
-    print("\n技能关键词频率统计：")
-    print(skill_df)
+    skill_counts = Counter(all_skills)
 
-    # 2. 城市分布分析
-    city_df = analyze_city_distribution(df)
-    city_output_path = REPORT_DIR / "city_distribution.csv"
-    city_df.to_csv(city_output_path, index=False, encoding="utf-8-sig")
+    skill_counts_series = pd.Series(skill_counts).sort_values(ascending=False)
 
-    print("\n城市岗位数量分布：")
-    print(city_df)
+    print(skill_counts_series)
 
-    # 3. 岗位类型分析
-    job_type_df = analyze_job_type_distribution(df)
-    job_type_output_path = REPORT_DIR / "job_type_distribution.csv"
-    job_type_df.to_csv(job_type_output_path, index=False, encoding="utf-8-sig")
+    return skill_counts_series
 
-    print("\n岗位类型分布：")
-    print(job_type_df)
 
-    print("\n岗位数据分析完成！")
-    print(f"分析结果已保存到：{REPORT_DIR}")
+def main():
+    """
+    主函数：负责组织整个分析流程
+    """
+
+    file_path = "data/processed/jobs_cleaned.csv"
+
+    df = load_data(file_path)
+
+    analyze_basic_info(df)
+
+    analyze_city_distribution(df)
+
+    analyze_job_type_distribution(df)
+
+    analyze_skill_frequency(df)
 
 
 if __name__ == "__main__":
-    analyze_jobs()
+    main()
