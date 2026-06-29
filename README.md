@@ -71,15 +71,15 @@ ai-intern-job-analysis/
 
 ## 六、当前进度
 
-- [x] 完成项目选题与求职方向分析
-- [x] 完成 GitHub 仓库创建与项目目录搭建
-- [x] 完成 README.md 初稿
-- [x] 完成 requirements.txt 和 .gitignore 配置
-- [x] 创建 crawler.py、clean_data.py、analysis.py、visualization.py 模块文件
-- [x] 创建岗位模拟数据 jobs_raw.csv
-- [x] 使用 Pandas 完成岗位数据读取、查看、去重和缺失值处理
-- [x] 初步实现岗位描述中的技能关键词提取
-- [x] 生成清洗后的岗位数据 jobs_cleaned.csv
+- [√] 完成项目选题与求职方向分析
+- [√] 完成 GitHub 仓库创建与项目目录搭建
+- [√] 完成 README.md 初稿
+- [√] 完成 requirements.txt 和 .gitignore 配置
+- [√] 创建 crawler.py、clean_data.py、analysis.py、visualization.py 模块文件
+- [√] 创建岗位模拟数据 jobs_raw.csv
+- [√] 使用 Pandas 完成岗位数据读取、查看、去重和缺失值处理
+- [√] 初步实现岗位描述中的技能关键词提取
+- [√] 生成清洗后的岗位数据 jobs_cleaned.csv
 
 ## 第二天学习记录
 
