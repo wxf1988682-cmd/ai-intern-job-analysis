@@ -22,8 +22,26 @@ AI 应用实习生 / Python 数据处理实习生 / 数据分析实习生
 
 ### 基于 Python 的 AI 实习岗位信息爬取与数据分析系统
 
+## 项目经历
+
+### 基于 Python 的 AI 实习岗位信息爬取与数据分析系统
+
+个人项目｜Python / Pandas / Matplotlib / 数据清洗 / 数据可视化
+
 项目简介：
-本项目面向 AI 实习、Python 开发、数据处理、AIGC 等方向岗位，使用 Python 对岗位信息进行采集、清洗、分析和可视化，统计岗位中的高频技能要求，并总结适合本科生准备实习的学习重点。
+本项目面向 AI 实习、Python 开发、数据处理、AIGC 等岗位方向，基于岗位数据完成数据读取、清洗、统计分析和可视化展示，用于分析不同岗位方向的数量分布及常见技能要求，并将分析结果整理为 GitHub 项目展示和简历项目经历。
+
+主要工作：
+
+1. 搭建项目目录结构，划分 data、src、outputs、docs 等模块，使用 Git 和 GitHub 进行项目版本管理；
+2. 使用 Pandas 读取岗位 CSV 数据，完成重复值删除、缺失值处理、字段检查等基础数据清洗工作；
+3. 根据岗位描述提取 Python、Pandas、Numpy、爬虫、MySQL、机器学习、AIGC、可视化等技能关键词；
+4. 使用 value_counts、groupby、Counter 等方法统计城市岗位分布、岗位方向分布和技能关键词频率；
+5. 使用 Matplotlib 绘制城市岗位数量分布、岗位方向数量分布、岗位类型占比和技能关键词频率 Top 15 等图表；
+6. 将分析结果整理到 README.md 中，形成可在 GitHub 展示的项目说明文档。
+
+项目收获：
+通过该项目熟悉了 Python 数据分析项目的基本流程，掌握了使用 Pandas 进行数据清洗和统计分析、使用 Matplotlib 进行结果可视化的方法，并初步理解了如何将技术学习成果整理成简历项目经历。
 
 技术栈：
 Python、Pandas、Numpy、requests、BeautifulSoup、Matplotlib、Seaborn、Git、GitHub
